@@ -32,11 +32,6 @@ bootstrap_ubuntu_dependencies() {
   sudo cp ${ROOT_DIR}/bin/apt/amazon-corretto-${JAVA_VERSION}.sources /etc/apt/sources.list.d/
   sudo apt -y update
 
-  wget https://apt.kitware.com/kitware-archive.sh
-  chmod +x kitware-archive.sh
-  sudo ./kitware-archive.sh
-  rm kitware-archive.sh
-
   sudo apt -y install \
     java-$JAVA_VERSION-amazon-corretto-jdk \
     git \
