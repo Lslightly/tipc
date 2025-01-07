@@ -51,11 +51,8 @@ bootstrap_ubuntu_dependencies() {
     sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
   fi
   
-  wget https://apt.llvm.org/llvm.sh
-  sed -i -E 's,Ubuntu_(.*),&\n    Pop_\1,g' llvm.sh
-  chmod +x llvm.sh
-  sudo ./llvm.sh $LLVM_VERSION
-  rm llvm.sh
+  wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
+  echo "deb https://mirrors.tuna.tsinghua.edu.cn/llvm-apt/jammy/ llvm-toolchain-jammy main" > /etc/apt/sources.list.d/llvm-apt.list
 
   sudo apt -y install \
     libllvm-$LLVM_VERSION-ocaml-dev \
